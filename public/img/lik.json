@@ -1,0 +1,44 @@
+{"frames": {
+
+"lik-left-odskok.png":
+{
+	"frame": {"x":0,"y":0,"w":62,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":60},
+	"sourceSize": {"w":62,"h":60}
+},
+"lik-left.png":
+{
+	"frame": {"x":62,"y":0,"w":62,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":60},
+	"sourceSize": {"w":62,"h":60}
+},
+"lik-right-odskok.png":
+{
+	"frame": {"x":124,"y":0,"w":62,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":60},
+	"sourceSize": {"w":62,"h":60}
+},
+"lik-right.png":
+{
+	"frame": {"x":186,"y":0,"w":62,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":60},
+	"sourceSize": {"w":62,"h":60}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lik.png",
+	"format": "RGBA8888",
+	"size": {"w":248,"h":60},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0a4c8948ced9a29e508bd573b7bee6a2:cba9b350439930d0f5c40a3195d31504:9b448cf63d4405f39fbb9e0e7f2f4d1b$"
+}
+}
