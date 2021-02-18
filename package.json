@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack ./src/app.js --mode=production",
     "start": "webpack serve ./src/app.js  --mode=development"
   },
   "author": "",
