@@ -12,6 +12,7 @@ app.loader
   .add('fon', 'background.jpg')
   .add('playAgain', 'playAgain.png')
   .add('play', 'play.png')
+  .add('kostyl', 'kostyl.jpg')
   .load(setup)
 
 let stageHeight = app.renderer.height
@@ -19,6 +20,8 @@ let stageWidth = app.renderer.width
 
 const camera = new PIXI.Container()
 app.stage.addChild(camera)
+const stable = new PIXI.Container()
+app.stage.addChild(stable)
 
 const world = {
   gravity: 0.1,
@@ -42,7 +45,7 @@ let jumper,
 let difficulty = 0
 let ease = 50
 let skobkaCount = 0
-let fon, playOn, playAgain
+let fon, playOn, playAgain, step, kostyl
 
 function setup(loader, resources) {
   let react = () => {
@@ -77,14 +80,6 @@ function setup(loader, resources) {
   }
 
   let acl = new Accelerometer({frequency: 60});
-
-  acl.addEventListener('reading', () => {
-  console.log("Acceleration along the X-axis " + acl.x);
-  console.log("Acceleration along the Y-axis " + acl.y);
-  console.log("Acceleration along the Z-axis " + acl.z);
-  });
-
-  acl.start();
 
   //#region sprites
   let sheet = resources['img/lik.json']
@@ -127,9 +122,23 @@ function setup(loader, resources) {
     .on('pointerover', effect)
     .on('pointerout', antieffect)
 
-  //#endregion
+    let kostylRenderer = () => {
+      step = randomInt(1,20)
+      for (let i = 0; i<50; i++) {
+      kostyl = new PIXI.Sprite(resources.kostyl.texture)
+      kostyl.width = 100
+      kostyl.height = 100
+      step = randomInt(1,20)
+      i += step
+      kostyl.x = koord[i].x+plat.width/3
+      kostyl.y = koord[i].y+plat.height
+      stable.addChild(kostyl)
+    }
+    }  
 
+  //#endregion
   platRenderer()
+  kostylRenderer()
   react()
 
   state = play
@@ -166,6 +175,8 @@ let platRenderer = () => {
   }
 }
 
+
+
 let mainPlat = (x, y) => {
   skobka = new PIXI.Graphics()
   skobka.lineStyle(5, 0xfdfefe, 1)
@@ -183,10 +194,12 @@ let mainPlat = (x, y) => {
   camera.addChild(skobka)
 }
 
-let move = () => {
+let move = () => { 
+
   jumper.x += jumper.vx
   jumper.vy += world.gravity
   jumper.y += jumper.vy
+
   if (jumper.x + jumper.width < 0) {
     jumper.x += stageWidth+jumper.width
   }
